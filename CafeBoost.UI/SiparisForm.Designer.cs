@@ -162,19 +162,21 @@
             // 
             this.btnMasaTasi.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnMasaTasi.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMasaTasi.Location = new System.Drawing.Point(629, 32);
+            this.btnMasaTasi.Location = new System.Drawing.Point(629, 34);
             this.btnMasaTasi.Name = "btnMasaTasi";
             this.btnMasaTasi.Size = new System.Drawing.Size(93, 28);
             this.btnMasaTasi.TabIndex = 7;
             this.btnMasaTasi.Text = "TAŞI";
             this.btnMasaTasi.UseVisualStyleBackColor = true;
+            this.btnMasaTasi.Click += new System.EventHandler(this.btnMasaTasi_Click);
             // 
             // cboMasalar
             // 
             this.cboMasalar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cboMasalar.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboMasalar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboMasalar.FormattingEnabled = true;
-            this.cboMasalar.Location = new System.Drawing.Point(461, 32);
+            this.cboMasalar.Location = new System.Drawing.Point(461, 34);
             this.cboMasalar.Name = "cboMasalar";
             this.cboMasalar.Size = new System.Drawing.Size(162, 28);
             this.cboMasalar.TabIndex = 8;
@@ -184,7 +186,7 @@
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(457, 9);
+            this.label3.Location = new System.Drawing.Point(457, 11);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(76, 20);
             this.label3.TabIndex = 9;
@@ -196,7 +198,7 @@
             this.lblMasaNo.BackColor = System.Drawing.Color.SandyBrown;
             this.lblMasaNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 45F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMasaNo.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.lblMasaNo.Location = new System.Drawing.Point(461, 66);
+            this.lblMasaNo.Location = new System.Drawing.Point(461, 82);
             this.lblMasaNo.Name = "lblMasaNo";
             this.lblMasaNo.Size = new System.Drawing.Size(261, 157);
             this.lblMasaNo.TabIndex = 10;

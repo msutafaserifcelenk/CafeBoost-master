@@ -15,15 +15,18 @@ namespace CafeBoost.UI
     {
         private readonly KafeVeri db;
         private readonly Siparis siparis;
+        private readonly AnaForm anaForm;
         private readonly BindingList<SiparisDetay> blsiparisDetaylar;
-        public SiparisForm(KafeVeri kafeVeri, Siparis siparis)
+        public SiparisForm(KafeVeri kafeVeri, Siparis siparis, AnaForm anaForm)
         {
 
             //Constructor parametresi olarak gelen bu nesneleri daha sonra da erişebileceğimiz fieldlara aktarıyoruz.
             db = kafeVeri;
+            this.anaForm = anaForm;
             this.siparis = siparis;
             InitializeComponent();
             dgvSiparisDetaylar.AutoGenerateColumns = false;
+            MasalariListele();
             UrunleriListele();
             MasaNoGuncelle();
             lblOdemeTutariGuncelle();
@@ -38,6 +41,19 @@ namespace CafeBoost.UI
             Object SelectedItem = 1;
             int sayi = (int)SelectedItem;
             int karesi = sayi * sayi;
+        }
+
+        private void MasalariListele()
+        {
+            cboMasalar.Items.Clear();
+            for (int i = 1; i <= db.MasaAdet; i++)
+            {
+                if (!db.AktifSiparisler.Any(x=>x.MasaNo==i))
+                {
+                    cboMasalar.Items.Add(i);
+                }
+                //cboMasalar.Items.RemoveAt(i);
+            }
         }
 
         //silerken liste güncellemek için ikinci yol
@@ -151,6 +167,17 @@ namespace CafeBoost.UI
             db.GecmisSiparisler.Add(siparis);
             DialogResult = DialogResult.OK;
             Close();
+        }
+
+        private void btnMasaTasi_Click(object sender, EventArgs e)
+        {
+            if (cboMasalar.SelectedIndex < 0) return;
+            int kaynak = siparis.MasaNo;
+            int hedef = (int)cboMasalar.SelectedItem;
+            siparis.MasaNo = hedef;
+            anaForm.MasaTasi(kaynak, hedef);
+            MasaNoGuncelle();
+            MasalariListele();
         }
     }
 }

@@ -14,7 +14,7 @@ namespace CafeBoost.UI
 {
     public partial class AnaForm : Form
     {
-        int masaAdet = 20;
+        //int masaAdet = 20;
         KafeVeri db = new KafeVeri();
 
         public AnaForm()
@@ -52,7 +52,8 @@ namespace CafeBoost.UI
             #region Masaların Oluşturulması
             ListViewItem lvi;
 
-            for (int i = 1; i <= masaAdet; i++)
+
+            for (int i = 1; i <= db.MasaAdet; i++)
             {
                 lvi = new ListViewItem("Masa " + i);
                 lvi.ImageKey = "bos";
@@ -84,9 +85,9 @@ namespace CafeBoost.UI
                 db.AktifSiparisler.Add(siparis);
                 lvwMasalar.SelectedItems[0].ImageKey = "dolu";
             }
-            SiparisForm frmSiparis = new SiparisForm(db, siparis); //new SiparisForm(db, siparis).ShowDialog();
+            SiparisForm frmSiparis = new SiparisForm(db, siparis, this); //new SiparisForm(db, siparis).ShowDialog();
             DialogResult dr = frmSiparis.ShowDialog();
-            if (dr==DialogResult.OK) 
+            if (dr == DialogResult.OK)
             {
                 lvwMasalar.SelectedItems[0].ImageKey = "bos";
             }
@@ -106,6 +107,20 @@ namespace CafeBoost.UI
             //}
             //return null; 
             #endregion
+        }
+        public void MasaTasi(int kaynak, int hedef)
+        {
+            foreach (ListViewItem lvi in lvwMasalar.Items)
+            {
+                if ((int)lvi.Tag==kaynak)
+                {
+                    lvi.ImageKey = "bos";
+                }
+                if ((int)lvi.Tag == hedef)
+                {
+                    lvi.ImageKey = "dolu";
+                }
+            }
         }
     }
 }
